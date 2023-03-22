@@ -1,0 +1,29 @@
+{
+  "name": "rest-express",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "start-dev": "nodemon /bin/wwww"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "mariadb": "^3.0.2",
+    "md5": "^2.3.0",
+    "morgan": "~1.9.1",
+    "mysql2": "^2.3.3",
+    "node-mailjet": "^5.1.1",
+    "nodejs-base64-encode": "^1.1.0",
+    "pm2": "^5.2.2",
+    "sequelize": "^6.25.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

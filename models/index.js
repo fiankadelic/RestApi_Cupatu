@@ -1,0 +1,19 @@
+const user_login = require("./user_login");
+const user = require("./user");
+const user_wallet = require("./user_wallet");
+const banner = require("./banner");
+const testi = require("./testi");
+const user_device = require("./user_device");
+const user_link_referral = require("./user_link_referral");
+const item_service = require("./item_service");
+const model = {};
+
+model.item_service = item_service;
+model.user_link_referral = user_link_referral;
+model.user_device = user_device;
+model.testi = testi;
+model.banner = banner;
+model.user_login = user_login;
+model.user_wallet = user_wallet;
+model.user = user;
+module.exports = model;
