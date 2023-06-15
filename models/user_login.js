@@ -25,6 +25,7 @@ const user_login = koneksi.define(
     level_login: {
       type: Sequelize.STRING,
       allowNull: false,
+      comment:"ADM = admin, USR = user, SPV = supervisor",
     },
     token_login: {
       type: Sequelize.TEXT,
