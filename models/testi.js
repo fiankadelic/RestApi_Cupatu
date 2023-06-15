@@ -1,7 +1,7 @@
 var koneksi = require("../koneksi");
 const Sequelize = require("sequelize");
 const testi = koneksi.define(
-  "testimonial",
+  "user_testimonial",
   {
     id_testi: {
       type: Sequelize.STRING,
