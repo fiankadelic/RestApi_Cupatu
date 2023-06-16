@@ -6,6 +6,8 @@ const testi = require("./testi");
 const user_device = require("./user_device");
 const user_link_referral = require("./user_link_referral");
 const item_service = require("./item_service");
+const order_ht = require("./order_ht");
+const order_dt = require("./order_dt");
 const model = {};
 
 model.item_service = item_service;
@@ -16,4 +18,6 @@ model.banner = banner;
 model.user_login = user_login;
 model.user_wallet = user_wallet;
 model.user = user;
+model.order_ht = order_ht;
+model.order_dt = order_dt;
 module.exports = model;

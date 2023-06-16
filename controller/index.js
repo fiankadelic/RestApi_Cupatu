@@ -5,6 +5,7 @@ const testi = require("./testi");
 const register = require("./register");
 const forgot = require("./forgot");
 const treatment = require("./treatment");
+const order_ht = require("./order_ht");
 const controller = {};
 
 controller.treatment = treatment;
@@ -14,4 +15,5 @@ controller.testi = testi;
 controller.banner = banner;
 controller.user_login = user_login;
 controller.user_wallet = user_wallet;
+controller.order_ht = order_ht;
 module.exports = controller;

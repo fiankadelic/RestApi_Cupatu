@@ -1,5 +1,6 @@
 var koneksi = require("../koneksi");
 const Sequelize = require("sequelize");
+const user = require("./user");
 const testi = koneksi.define(
   "user_testimonial",
   {
@@ -15,7 +16,7 @@ const testi = koneksi.define(
     },
     no_user: {
       type: Sequelize.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     nama_user: {
       type: Sequelize.STRING,
@@ -35,4 +36,6 @@ const testi = koneksi.define(
     freezeTableName: true,
   }
 );
+testi.hasOne(user, { foreignKey: "no_user" });
+testi.belongsTo(user, { foreignKey: "no_user" });
 module.exports = testi;

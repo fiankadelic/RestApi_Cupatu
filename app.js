@@ -14,6 +14,7 @@ var testiRouter = require("./routes/testi");
 var registerRouter = require("./routes/register");
 var forgotRouter = require("./routes/forgot");
 var treatmentRouter = require("./routes/treatment");
+var orderhtRouter = require("./routes/order_ht");
 
 var app = express();
 app.use(bodyParser.json());
@@ -37,6 +38,7 @@ app.use("/register", registerRouter);
 app.use("/forgot", forgotRouter);
 app.use("/forgot/send", forgotRouter);
 app.use("/treatment", treatmentRouter);
+app.use("/orderht", orderhtRouter);
 
 
 app.use(function (req, res, next) {
