@@ -3,12 +3,13 @@ const controller = {};
 
 controller.getAll = async function (req, res) {
   try {
-    let getOrder_ht = await model.order_ht.findAll({
-      include: [{ model: model.order_dt }],
-      order: [["noorder", "DESC"]],
+    let getAll = await model.usr_order.findAll({
+      include: [{ model: model.usr_order_detail, include:[{model: model.adm_service, attributes:["NAME"]}] }],
+      // include: [{ model: model.service }],
+      order: [["ID_ORDER", "DESC"]],
     });
-    if (getOrder_ht.length > 0) {
-      res.json(getOrder_ht);
+    if (getAll.length > 0) {
+      res.json(getAll);
     } else {
       res.status(200).json({
         message: " Tidak ada data",

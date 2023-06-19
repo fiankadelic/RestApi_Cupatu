@@ -3,17 +3,17 @@ var md5 = require("md5");
 const controller = {};
 const { Op, json } = require("sequelize");
 
-controller.getUserLogin = async function (req, res) {
+controller.getAll = async function (req, res) {
   email = req.body.email_POST;
   password = md5(req.body.password_POST);
   try {
-    let user_login = await model.user_login.findAll({
-      include: [{ model: model.user }],
+    let user_login = await model.usr_login.findAll({
+      include: [{ model: model.usr_list }],
       where: {
         [Op.and]: [
-          { email_user: email },
-          { password_login: password },
-          { level_login: "USR" },
+          { EMAIL: email },
+          { PASSWORD: password },
+          { ID_CATAGORY: "1" },
         ],
         // [Op.or]: [
         //     { email_user: email },

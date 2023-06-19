@@ -2,6 +2,6 @@ var express = require("express");
 var router = express.Router();
 const controller = require("../controller/index");
 
-router.get("/", controller.order_ht.getAll);
+router.get("/", controller.usr_order.getAll);
 
 module.exports = router;

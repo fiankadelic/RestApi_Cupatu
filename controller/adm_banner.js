@@ -6,23 +6,19 @@ const { Op } = require("sequelize");
 controller.getAll = async function (req, res) {
   today = new Date();
   try {
-    let getBanner = await model.banner.findAll({
+    let getAll = await model.adm_banner.findAll({
       where: {
         [Op.and]: [
-          { start_date_banner: { [Op.lte]: today } },
-          { finish_date_banner: { [Op.gte]: today } },
-          { status_banner: "1" },
+          { START_DATE: { [Op.lte]: today } },
+          { FINISH_DATE: { [Op.gte]: today } },
+          { STATUS: "1" },
         ],
       },
-      order: [["id_banner", "ASC"]],
+      order: [["ID_BANNER", "ASC"]],
     });
 
-    if (getBanner.length > 0) {
-      // res.status(200).json({
-      //   message: "Get User wallet",
-      //   data: user_wallet,
-      // });
-      res.json(getBanner);
+    if (getAll.length > 0) {
+      res.json(getAll);
     } else {
       res.status(200).json({
         message: " Tidak ada data",

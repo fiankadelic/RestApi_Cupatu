@@ -15,9 +15,9 @@ controller.getEmail = async function (req, res) {
   emailEncode = encode.encode(email, "base64");
   link = "http://cupatu.id/forgot.php?t=" + emailEncode;
   try {
-    let getEmailUser = await model.user_login.findAll({
+    let getEmailUser = await model.usr_login.findAll({
       where: {
-        email_user: {
+        EMAIL: {
           [Op.eq]: email,
         },
       },
@@ -74,13 +74,13 @@ controller.setPassword = async function (req, res) {
   email = req.params.email;
   password = md5(req.body.password_POST);
   try {
-    let getEmailUser = await model.user_login.update(
+    let getEmailUser = await model.usr_login.update(
       {
-        password_login: password,
+        PASSWORD: password,
       },
       {
         where: {
-          [Op.and]: [{ email_user: email }, { level_login: "USR" }],
+          [Op.and]: [{ EMAIL: email }, { ID_CATAGORY: "1" }],
         },
       }
     );

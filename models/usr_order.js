@@ -1,75 +1,75 @@
 var koneksi = require("../koneksi");
 const Sequelize = require("sequelize");
-const order_dt = require("./order_dt");
-const order_ht = koneksi.define(
-  "order_ht",
+const usr_order_detail = require("./usr_order_detail");
+const usr_order = koneksi.define(
+  "USR_ORDER",
   {
-    noorder: {
+    ID_ORDER: {
       type: Sequelize.STRING,
       allowNull: false,
       primaryKey: true,
     },
-    id_workshop: {
+    ID_WORKSHOP: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    id_dropsite: {
+    ID_DROPSITE: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    no_user: {
+    ID_USER: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    tanggal_order: {
+    DATE_ORDER: {
       type: Sequelize.DATEONLY,
       allowNull: false,
     },
-    tanggal_proses: {
+    DATE_PROCESS: {
       type: Sequelize.DATEONLY,
       allowNull: false,
     },
-    tanggal_selesai: {
+    DATE_FINISH: {
       type: Sequelize.DATEONLY,
       allowNull: false,
     },
-    tanggal_pembayaran: {
+    DATE_PAYMENT: {
       type: Sequelize.DATEONLY,
       allowNull: false,
     },
-    nohandphone: {
+    HANDPHONE: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    subtotal: {
+    SUBTOTAL: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    ongkir: {
+    SHIPPING_COST: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    cash: {
+    CASH: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    koin: {
+    COIN: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    total: {
+    TOTAL: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    pembayaran: {
+    PAYMENT: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    status: {
+    STATUS: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    posting: {
+    POSTING: {
       type: Sequelize.STRING,
       allowNull: false,
     },
@@ -79,6 +79,6 @@ const order_ht = koneksi.define(
     freezeTableName: true,
   }
 );
-order_ht.hasMany(order_dt, { foreignKey: "noorder" });
-// order_ht.belongsTo(order_dt, { foreignKey: "noorder" });
-module.exports = order_ht;
+usr_order.hasMany(usr_order_detail, { foreignKey: "ID_ORDER" });
+usr_order.belongsTo(usr_order_detail, { foreignKey: "ID_ORDER" });
+module.exports = usr_order;

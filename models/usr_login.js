@@ -1,40 +1,46 @@
 var koneksi = require("../koneksi");
 const Sequelize = require("sequelize");
-const banner = koneksi.define(
-  "banner",
+const usr_list = require("./usr_list");
+const usr_login = koneksi.define(
+  "USR_LOGIN",
   {
-    id_dropsite: {
+    ID_LOGIN: {
       type: Sequelize.INTEGER,
       allowNull: false,
-    },
-    id_banner: {
       primaryKey: true,
       autoIncrement: true,
+    },
+    ID_USER: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    judul_banner: {
+    ID_DROPSITE: {
+      type: Sequelize.INTEGER,
+      allowNull: true,
+    },
+    EMAIL: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    gambar_banner: {
+    PASSWORD: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    start_date_banner: {
-      type: Sequelize.DATEONLY,
+    ID_CATAGORY: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      comment:"ADM = admin, USR = user, SPV = supervisor",
+    },
+    CODE_TOKEN: {
+      type: Sequelize.TEXT,
       allowNull: false,
     },
-    finish_date_banner: {
-      type: Sequelize.DATEONLY,
-      allowNull: false,
-    },
-    status_banner: {
+    ACTIVATION: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    link_banner: {
-      type: Sequelize.TEXT,
+    LOG: {
+      type: Sequelize.STRING,
       allowNull: false,
     },
   },
@@ -43,4 +49,6 @@ const banner = koneksi.define(
     freezeTableName: true,
   }
 );
-module.exports = banner;
+usr_login.hasOne(usr_list, { foreignKey: "ID_USER" });
+usr_login.belongsTo(usr_list, { foreignKey: "ID_USER" });
+module.exports = usr_login;

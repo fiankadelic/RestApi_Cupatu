@@ -1,19 +1,23 @@
 var koneksi = require("../koneksi");
 const Sequelize = require("sequelize");
-const user_link_referral = koneksi.define(
-  "user_link_referral",
+const usr_device = koneksi.define(
+  "USR_DEVICE",
   {
-    id_link: {
+    ID_DEVICE: {
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    no_user: {
+    ID_USER: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    kode_link_referall: {
+    SERIAL_NUMBER: {
+      type: Sequelize.STRING,
+      allowNull: true,
+    },
+    PLATFORM: {
       type: Sequelize.STRING,
       allowNull: true,
     },
@@ -23,4 +27,4 @@ const user_link_referral = koneksi.define(
     freezeTableName: true,
   }
 );
-module.exports = user_link_referral;
+module.exports = usr_device;

@@ -1,47 +1,48 @@
 var koneksi = require("../koneksi");
 const Sequelize = require("sequelize");
-const order_dt = koneksi.define(
-  "order_dt",
+const adm_service = require("./adm_service");
+const usr_order_detail = koneksi.define(
+  "USR_ORDER_DETAIL",
   {
-    id_order: {
+    ID_ORDER_DETAIL: {
       type: Sequelize.STRING,
       allowNull: false,
       autoIncrement:true,
       primaryKey: true,
     },
-    noorder : {
+    ID_ORDER	 : {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    no_user: {
+    ID_USER: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    tanggal: {
+    DATE: {
       type: Sequelize.DATEONLY,
       allowNull: false,
     },
-    no_akun: {
+    NO_COA: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    nama_service: {
+    ID_SERVICE: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    BRAND: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    merek: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    harga: {
+    PRICE: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    status: {
+    STATUS: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    pack: {
+    PACK: {
       type: Sequelize.STRING,
       allowNull: true,
     },
@@ -51,4 +52,6 @@ const order_dt = koneksi.define(
     freezeTableName: true,
   }
 );
-module.exports = order_dt;
+usr_order_detail.hasOne(adm_service, { foreignKey: "ID_SERVICE" });
+usr_order_detail.belongsTo(adm_service, { foreignKey: "ID_SERVICE" });
+module.exports = usr_order_detail;

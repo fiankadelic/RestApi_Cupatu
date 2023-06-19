@@ -1,24 +1,24 @@
 var koneksi = require("../koneksi");
 const Sequelize = require("sequelize");
-const user_device = koneksi.define(
-  "user_device",
+const usr_wallet = koneksi.define(
+  "USR_WALLET",
   {
-    id_device: {
-      type: Sequelize.INTEGER,
+    ID_WALLLET: {
+      type: Sequelize.STRING,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    no_user: {
+    ID_USER: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    serial_device: {
-      type: Sequelize.STRING,
+    CASH: {
+      type: Sequelize.INTEGER,
       allowNull: true,
     },
-    platform_device: {
-      type: Sequelize.STRING,
+    COIN: {
+      type: Sequelize.INTEGER,
       allowNull: true,
     },
   },
@@ -27,4 +27,4 @@ const user_device = koneksi.define(
     freezeTableName: true,
   }
 );
-module.exports = user_device;
+module.exports = usr_wallet;

@@ -1,10 +1,10 @@
 const model = require("../models/index");
 const controller = {};
 
-controller.getTestiAll = async function (req, res) {
+controller.getAll = async function (req, res) {
   try {
-    let getTesti = await model.testi.findAll({
-      order: [["id_testi", "DESC"]],
+    let getTesti = await model.usr_testimonial.findAll({
+      order: [["ID_TESTIMONIAL", "DESC"]],
       limit: 10,
     });
     if (getTesti.length > 0) {

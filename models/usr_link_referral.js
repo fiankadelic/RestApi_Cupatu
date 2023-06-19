@@ -1,24 +1,20 @@
 var koneksi = require("../koneksi");
 const Sequelize = require("sequelize");
-const user_wallet = koneksi.define(
-  "user_wallet",
+const usr_link_referral = koneksi.define(
+  "USR_LINK_REFERRAL",
   {
-    id_wallet: {
-      type: Sequelize.STRING,
+    ID_LINK_REFERRAL: {
+      type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    no_user: {
+    ID_USER: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    cash_wallet: {
-      type: Sequelize.INTEGER,
-      allowNull: true,
-    },
-    koin_wallet: {
-      type: Sequelize.INTEGER,
+    CODE_LINK_REFERRAL: {
+      type: Sequelize.STRING,
       allowNull: true,
     },
   },
@@ -27,4 +23,4 @@ const user_wallet = koneksi.define(
     freezeTableName: true,
   }
 );
-module.exports = user_wallet;
+module.exports = usr_link_referral;

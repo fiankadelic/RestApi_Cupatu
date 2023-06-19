@@ -6,15 +6,15 @@ var logger = require("morgan");
 const bodyParser = require("body-parser");
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var usersRouter = require("./routes/usr_list");
 var loginRouter = require("./routes/user_login");
-var walletRouter = require("./routes/user_wallet");
-var bannerRouter = require("./routes/banner");
-var testiRouter = require("./routes/testi");
-var registerRouter = require("./routes/register");
-var forgotRouter = require("./routes/forgot");
-var treatmentRouter = require("./routes/treatment");
-var orderhtRouter = require("./routes/order_ht");
+var walletRouter = require("./routes/usr_wallet");
+var bannerRouter = require("./routes/adm_banner");
+var testiRouter = require("./routes/usr_testimonial");
+var registerRouter = require("./routes/usr_register");
+var forgotRouter = require("./routes/usr_forgot");
+var serviceRouter = require("./routes/adm_service");
+var orderRouter = require("./routes/usr_order");
 
 var app = express();
 app.use(bodyParser.json());
@@ -33,12 +33,12 @@ app.use("/users", usersRouter);
 app.use("/login", loginRouter);
 app.use("/wallet", walletRouter);
 app.use("/banner", bannerRouter);
-app.use("/testi", testiRouter);
+app.use("/testimonial", testiRouter);
 app.use("/register", registerRouter);
 app.use("/forgot", forgotRouter);
 app.use("/forgot/send", forgotRouter);
-app.use("/treatment", treatmentRouter);
-app.use("/orderht", orderhtRouter);
+app.use("/service", serviceRouter);
+app.use("/order", orderRouter);
 
 
 app.use(function (req, res, next) {

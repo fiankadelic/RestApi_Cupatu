@@ -1,38 +1,42 @@
 var koneksi = require("../koneksi");
 const Sequelize = require("sequelize");
-const user = koneksi.define(
-  "user",
+const usr_list = koneksi.define(
+  "USR_LIST",
   {
-    no_user: {
+    ID_USER: {
       type: Sequelize.STRING,
       allowNull: false,
       primaryKey: true,
     },
-    nama_user: {
+    FULLNAME: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    notlp_user: {
+    HANDPHONE: {
       type: Sequelize.STRING,
       allowNull: true,
     },
-    alamat_user: {
+    ADDRESS: {
       type: Sequelize.STRING,
       allowNull: true,
     },
-    instagram_user: {
+    INSTAGRAM: {
       type: Sequelize.STRING,
       allowNull: true,
     },
-    email_user: {
+    EMAIL: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    kode_referral: {
+    DATE_JOIN: {
+      type: Sequelize.DATEONLY,
+      allowNull: false,
+    },
+    CODE_REFERRAL: {
       type: Sequelize.STRING,
       allowNull: true,
     },
-    img_user: {
+    PHOTO: {
       type: Sequelize.STRING,
       allowNull: false,
     },
@@ -42,4 +46,4 @@ const user = koneksi.define(
     freezeTableName: true,
   }
 );
-module.exports = user;
+module.exports = usr_list;

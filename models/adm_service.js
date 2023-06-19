@@ -1,33 +1,36 @@
 var koneksi = require("../koneksi");
 const Sequelize = require("sequelize");
-const user = require("./user");
-const testi = koneksi.define(
-  "user_testimonial",
+const adm_service = koneksi.define(
+  "ADM_SERVICE",
   {
-    id_testi: {
-      type: Sequelize.STRING,
+    ID_SERVICE: {
+      type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    noorder: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    no_user: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    nama_user: {
+    NO_COA: {
       type: Sequelize.STRING,
       allowNull: true,
     },
-    keterangan_testi: {
+    CATEGORY: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    NAME: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    DESCRIPTION: {
       type: Sequelize.TEXT,
       allowNull: true,
     },
-    rating_testi: {
-      type: Sequelize.INTEGER,
+    TIME_DURATION: {
+      type: Sequelize.TEXT,
+      allowNull: true,
+    },
+    PRICE: {
+      type: Sequelize.STRING,
       allowNull: false,
     },
   },
@@ -36,6 +39,4 @@ const testi = koneksi.define(
     freezeTableName: true,
   }
 );
-testi.hasOne(user, { foreignKey: "no_user" });
-testi.belongsTo(user, { foreignKey: "no_user" });
-module.exports = testi;
+module.exports = adm_service;

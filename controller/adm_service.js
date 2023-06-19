@@ -3,17 +3,19 @@ const controller = {};
 const { Op } = require("sequelize");
 // const { user_wallet } = require(".");
 
-controller.getUserWallet = async function (req, res) {
-  no_wallet = req.body.idUserLogin_POST;
+controller.getAll = async function (req, res) {
+  itemRespone = req.body.item_POST;
   try {
-    let user_wallet = await model.user_wallet.findAll({
+    let item = await model.adm_service.findAll({
       where: {
-        [Op.and]: [{ no_user: no_wallet }],
+        CATEGORY: {
+          [Op.eq]: itemRespone,
+        },
       },
     });
-    if (user_wallet.length > 0) {
-      console.log(user_wallet);
-      res.json(user_wallet);
+    if (item.length > 0) {
+      console.log(item);
+      res.json(item);
     } else {
       res.status(200).json({
         message: " Tidak ada data",

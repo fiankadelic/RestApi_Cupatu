@@ -81,6 +81,7 @@ controller.getDevice = async function (req, res, next) {
   noreferal = (noReferal(8), randomtextnumber);
   nouser = (noUser(4), randomtextnumber);
   namalengkap = req.body.fullname_POST;
+  dropsite = req.body.id_dropsite_POST;
   password = md5(req.body.password_POST);
   email = req.body.email_POST;
   handphone = req.body.handphone_POST;
@@ -88,6 +89,7 @@ controller.getDevice = async function (req, res, next) {
   platform = req.body.platform_POST;
   serial = req.body.serial_POST;
   virtual = req.body.PhysicalDevice_POST;
+  date_join = new Date();
   Detik = new Date().getSeconds();
   Menit = new Date().getMinutes();
   Jam = new Date().getHours();
@@ -109,9 +111,9 @@ controller.getDevice = async function (req, res, next) {
       checkDevice();
     }
     async function checkDevice() {
-      let getuser_device = await model.user_device.findAll({
+      let getuser_device = await model.usr_device.findAll({
         where: {
-          serial_device: {
+          SERIAL_NUMBER: {
             [Op.eq]: serial,
           },
         },
@@ -123,9 +125,9 @@ controller.getDevice = async function (req, res, next) {
       }
     }
     async function checkEmail() {
-      let getEmail = await model.user_login.findAll({
+      let getEmail = await model.usr_login.findAll({
         where: {
-          [Op.and]: [{ email_user: email }, { level_login: "USR" }],
+          [Op.and]: [{ EMAIL: email }, { ID_CATAGORY: "1" }],
         },
       });
       if (getEmail.length > 0) {
@@ -135,9 +137,9 @@ controller.getDevice = async function (req, res, next) {
       }
     }
     async function checkNoUser() {
-      let getEmail = await model.user.findAll({
+      let getEmail = await model.usr_list.findAll({
         where: {
-          no_user: {
+          ID_USER: {
             [Op.eq]: nouser,
           },
         },
@@ -149,15 +151,16 @@ controller.getDevice = async function (req, res, next) {
       }
     }
     async function insertUser() {
-      await model.user.create({
-        no_user: nouser,
-        nama_user: namalengkap,
-        notlp_user: handphone,
-        alamat_user: "",
-        instagram_user: "ID instagram",
-        email_user: email,
-        kode_referral: noreferal,
-        img_user: "user.png",
+      await model.usr_list.create({
+        ID_USER: nouser,
+        FULLNAME: namalengkap,
+        HANDPHONE: handphone,
+        ADDRESS: "",
+        INSTAGRAM: "ID instagram",
+        EMAIL: email,
+        DATE_JOIN: date_join,
+        CODE_REFERRAL: noreferal,
+        PHOTO: "user.png",
       });
       if (res.status(200)) {
         insertUserLogin();
@@ -166,14 +169,15 @@ controller.getDevice = async function (req, res, next) {
       }
     }
     async function insertUserLogin() {
-      await model.user_login.create({
-        no_user: nouser,
-        email_user: email,
-        password_login: password,
-        level_login: "USR",
-        token_login: token,
-        aktivasi_login: "0",
-        log_id_login: "0",
+      await model.usr_login.create({
+        ID_USER: nouser,
+        EMAIL: email,
+        PASSWORD: password,
+        ID_DROPSITE: dropsite,
+        ID_CATAGORY: "1",
+        CODE_TOKEN: token,
+        ACTIVATION: "0",
+        LOG: "0",
       });
       if (res.status(200)) {
         insertReferral();
@@ -182,9 +186,9 @@ controller.getDevice = async function (req, res, next) {
       }
     }
     async function insertReferral() {
-      await model.user_link_referral.create({
-        no_user: nouser,
-        kode_link_referall: linkreferal,
+      await model.usr_link_referral.create({
+        ID_USER: nouser,
+        CODE_LINK_REFERRAL: linkreferal,
       });
       if (res.status(200)) {
         insertWallet();
@@ -193,10 +197,10 @@ controller.getDevice = async function (req, res, next) {
       }
     }
     async function insertWallet() {
-      await model.user_wallet.create({
-        no_user: nouser,
-        cash_wallet: 50000,
-        koin_wallet: 0,
+      await model.usr_wallet.create({
+        ID_USER: nouser,
+        CASH: 50000,
+        COIN: 0,
       });
       if (res.status(200)) {
         insertDevice();
@@ -205,10 +209,10 @@ controller.getDevice = async function (req, res, next) {
       }
     }
     async function insertDevice() {
-      await model.user_device.create({
-        no_user: nouser,
-        serial_device: serial,
-        platform_device: platform,
+      await model.usr_device.create({
+        ID_USER: nouser,
+        SERIAL_NUMBER: serial,
+        PLATFORM: platform,
       });
       if (res.status(200)) {
         sendEmail();

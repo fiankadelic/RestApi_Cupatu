@@ -1,42 +1,40 @@
 var koneksi = require("../koneksi");
 const Sequelize = require("sequelize");
-const user = require("./user");
-const user_login = koneksi.define(
-  "user_login",
+const adm_banner = koneksi.define(
+  "ADM_BANNER",
   {
-    id_login: {
+    ID_BANNER: {
       type: Sequelize.INTEGER,
       allowNull: false,
+    },
+    ID_DROPSITE: {
       primaryKey: true,
       autoIncrement: true,
-    },
-    no_user: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    email_user: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    password_login: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    level_login: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      comment:"ADM = admin, USR = user, SPV = supervisor",
-    },
-    token_login: {
-      type: Sequelize.TEXT,
-      allowNull: false,
-    },
-    aktivasi_login: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    log_id_login: {
+    NAME: {
       type: Sequelize.STRING,
+      allowNull: false,
+    },
+    IMAGE: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    START_DATE: {
+      type: Sequelize.DATEONLY,
+      allowNull: false,
+    },
+    FINISH_DATE: {
+      type: Sequelize.DATEONLY,
+      allowNull: false,
+    },
+    STATUS: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    LINK_IMAGE: {
+      type: Sequelize.TEXT,
       allowNull: false,
     },
   },
@@ -45,6 +43,4 @@ const user_login = koneksi.define(
     freezeTableName: true,
   }
 );
-user_login.hasOne(user, { foreignKey: "no_user" });
-user_login.belongsTo(user, { foreignKey: "no_user" });
-module.exports = user_login;
+module.exports = adm_banner;
